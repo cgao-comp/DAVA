@@ -10,59 +10,8 @@ class Args():
 
         self.note = 'GraphRNN_VAE'
 
-        
-
-        
-
-        
-
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
         self.graph_type = 'Twitter'
-
         
-
-        
-
-        
-
-        
-
-        
-
-        
-
-
-        
-
-        
-
-        
-
-        
-
-        
-
-
-        
-
         self.max_num_node = None 
 
         self.max_prev_node = None 
@@ -72,9 +21,6 @@ class Args():
 
         self.small_test = True
 
-        
-
-        
 
         if 'small' in self.graph_type:
             self.parameter_shrink = 2
@@ -87,10 +33,6 @@ class Args():
         self.low_embedding_size_rnn = int(128/self.parameter_shrink) 
 
         self.embedding_size_rnn_output = 128 
-
-        
-
-
 
         self.batch_size = 16 
 
@@ -143,21 +85,9 @@ class Args():
         self.load_epoch = 3000
         self.save = True
 
-
-        
-
-        
-
         self.generator_baseline = 'BA'
 
-        
-
-        
-
         self.metric_baseline = 'clustering'
-
-
-        
 
         self.fname = self.note + '_' + self.graph_type + '_' + str(self.num_layers) + '_' + str(self.hidden_size_rnn) + '_'
         self.fname_pred = self.note+'_'+self.graph_type+'_'+str(self.num_layers)+'_'+ str(self.hidden_size_rnn)+'_pred_'

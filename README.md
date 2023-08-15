@@ -8,9 +8,9 @@ Due to Twitter's policy restrictions and file size upload limitations, please co
 
 Fortunately, some datasets with existing links can be accessed through universally recognized ways:
 
-[weibo](https://www.dropbox.com/s/46r50ctrfa0ur1o/rumdect.zip?dl=0)
+[Twitter](https://www.dropbox.com/s/7ewzdrbelpmrnxu/rumdetect2017.zip)
 
-[twitter](https://www.dropbox.com/s/7ewzdrbelpmrnxu/rumdetect2017.zip)
+[Weibo](https://www.dropbox.com/s/46r50ctrfa0ur1o/rumdect.zip?dl=0)
 
 ## Start
 

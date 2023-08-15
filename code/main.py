@@ -104,31 +104,6 @@ if __name__ == '__main__':
     save_graph_list(graphs, args.graph_save_path + args.fname_test + '0.dat')
     print('train and test graphs saved at: ', args.graph_save_path + args.fname_test + '0.dat')
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-        
-
-        
-
-        
-
-        
-
-
-
-    
 
     dataset = Graph_DataProcessing(graphs_train,max_prev_node=args.max_prev_node,max_num_node=args.max_num_node)
     args.max_prev_node = dataset.get_max_prev_node()
@@ -138,14 +113,6 @@ if __name__ == '__main__':
                                                                      num_samples=args.batch_size*args.batch_ratio, replacement=True)
     dataset_loader = torch.utils.data.DataLoader(dataset, batch_size=args.batch_size, num_workers=args.num_workers,
                                                sampler=sample_strategy)
-
-    
-
-    
-
-    
-
-    
 
 
     args.hidden_size_rnn_output = 15 if args.feature_numeric is False else 6
@@ -160,39 +127,8 @@ if __name__ == '__main__':
                                   d_query=args.feature_number+args.hidden_size_rnn_output, d_value=args.max_prev_node-1).cuda()
     args.fixed_num = False
 
-    
-
-    
-
-    
-
-
     print(rnn)
     print(output)
 
 
-    
-
     train(args, dataset_loader, rnn, output, union_graph_type, graphs)
-
-    
-
-    
-
-
-    
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-

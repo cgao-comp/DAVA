@@ -36,68 +36,11 @@ for num_layers in range(4,5):
     graph_pred_len_list = graph_pred_len_list_raw
 
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-
-
-
-    
-
-    
-
     real_order = np.argsort(graph_real_len_list)[::-1]
     pred_order = np.argsort(graph_pred_len_list)[::-1]
-    
-
-    
 
     graph_real_list = [graph_real_list[i] for i in real_order]
     graph_pred_list = [graph_pred_list[i] for i in pred_order]
-
-    
-
-    
 
     print('real average nodes', sum([graph_real_list[i].number_of_nodes() for i in range(len(graph_real_list))])/len(graph_real_list))
     print('pred average nodes', sum([graph_pred_list[i].number_of_nodes() for i in range(len(graph_pred_list))])/len(graph_pred_list))
@@ -105,47 +48,11 @@ for num_layers in range(4,5):
     print('num of pred graphs', len(graph_pred_list))
 
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-
-    
-
     for iter in range(8):
         print('iter', iter)
         graph_list = []
         for i in range(8):
             index = 32 * iter + i
-            
-
-            
-
-            
 
             graph_list.append(graph_pred_list[index])
             
@@ -154,16 +61,11 @@ for num_layers in range(4,5):
 
         draw_graph_list(graph_list, row=4, col=4, fname=figname + '_' + str(iter)+'_pred')
 
-    
-
     for iter in range(8):
         print('iter', iter)
         graph_list = []
         for i in range(8):
             index = 16 * iter + i
-            
-
-            
 
             graph_list.append(graph_real_list[index])
             
@@ -173,175 +75,3 @@ for num_layers in range(4,5):
 
 
         draw_graph_list(graph_list, row=4, col=4, fname=figname + '_' + str(iter)+'_real')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

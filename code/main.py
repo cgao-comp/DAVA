@@ -6,7 +6,6 @@ import processing16
 from processing16 import DataReader
 
 import setproctitle
-setproctitle.setproctitle('hdp')
 
 torch.cuda.set_device(1)
 print('using set cuda!')

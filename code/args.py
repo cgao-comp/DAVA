@@ -1,6 +1,3 @@
-
-
-
 class Args():
     def __init__(self):
 
@@ -43,8 +40,6 @@ class Args():
         self.num_heads = None
         self.feature_number = None
         self.fixed_num = None
-
-        
 
         self.num_workers = 4 
 

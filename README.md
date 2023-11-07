@@ -32,7 +32,7 @@ In our study, we employed two distinct models for graph-level and edge-level gen
 
 **Edge-Level Generation Model (SimpleAttentionModel):**
 - Query Transformation Layers:
-  - The first query linear layer with an input size of 12 and an output size of 24, including bias.
+  - The first query linear layer with an input size of 12 and an output size of 24, including bias. The 12 here refers to the concatenation of the 6 features output by the VAE with 6 user-specific features.
   - The second query linear layer, expanding the feature size from 24 to 99, including bias.
 - Key Transformation Layers:
   - The first key linear layer with an input size of 6 and an output size of 24, including bias.

@@ -43,5 +43,7 @@ In our study, we employed two distinct models for graph-level and edge-level gen
 - The Adam optimizer is utilized with an initial learning rate of 0.001.
 - To divide the training dataset and the test dataset, a 10-fold cross-validation strategy is used. In each fold, we train DAVA using the training set. Then each scale of propagation cascade in the test set representing our expected cascade scale is specified for DAVA to generate new propagation cascade graphs. Next, we employ three evaluation scenarios (including the authoritative MMD and downstream task scenarios) and compare them with SOTAs to measure the performance of DAVA. 
 - Glorot initialization is used for weight parameter initialization.
+- In the KL constraint part of the loss function, the latent variable distribution is enforced to conform to an exponential distribution with a lambda of 1.
+- An attention mechanism with 4 heads is opted.
 
 The configurations for these models were fine-tuned to achieve the optimal results presented in our paper. These settings were instrumental in effectively capturing the complexities inherent in graph-level and edge-level generation tasks.

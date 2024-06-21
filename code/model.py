@@ -223,13 +223,10 @@ def calculate_mmd_tqdm(graphs1: list, graphs2: list, sigma: float) -> float:
     for i in tqdm(range(m)):
         for j in range(m):
             inner_counter += 1
-            
-
             mean_within_group1_part = graph_kernel(graphs1[i], graphs1[j], sigma)
             mean_within_group1 += mean_within_group1_part
             success_time += 1
             
-
     mean_within_group1 /= success_time
 
     success_time = 0
@@ -237,8 +234,6 @@ def calculate_mmd_tqdm(graphs1: list, graphs2: list, sigma: float) -> float:
     for i in tqdm(range(n)):
         for j in range(n):
             inner_counter += 1
-            
-
             mean_within_group2_part = graph_kernel(graphs2[i], graphs2[j], sigma)
             mean_within_group2 += mean_within_group2_part
             success_time += 1
@@ -246,29 +241,16 @@ def calculate_mmd_tqdm(graphs1: list, graphs2: list, sigma: float) -> float:
     mean_within_group2 /= success_time
     total_between_comparisons = m * n
     between_counter = 0
-
     success_time = 0
     mean_between_groups = 0
     for i in tqdm(range(m)):
         for j in range(n):
             between_counter += 1
-            
-
             mean_between_groups_part = graph_kernel(graphs1[i], graphs2[j], sigma)
             mean_between_groups += mean_between_groups_part
-            
-
             success_time += 1
-
     mean_between_groups /= success_time
-
-    
-
-    print("mean_within_group1: ", mean_within_group1)
-    print("mean_within_group2: ", mean_within_group2)
-    print("mean_between_groups: ", mean_between_groups)
     mmd = mean_within_group1 + mean_within_group2 - 2 * mean_between_groups
-
     return mmd
 
 import pickle

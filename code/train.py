@@ -36,7 +36,6 @@ import gc
 def train_rnn_epoch(epoch, args, rnn, output, data_loader,
                     optimizer_rnn, optimizer_output,
                     scheduler_rnn, scheduler_output):
-    print('main.target_lambda:', main.target_lambda)
     rnn.train()
     output.train()
     loss_sum = 0
@@ -111,7 +110,6 @@ def train_rnn_epoch(epoch, args, rnn, output, data_loader,
         kl_loss = torch.log(z_lambda / main.target_lambda) + (main.target_lambda / z_lambda) - 1
         kl_loss = torch.sum(kl_loss)
         kl_loss = kl_loss/ (z_lambda.size(0)*z_lambda.size(1)*z_lambda.size(2))
-        print('kl_loss:', kl_loss)
 
         if epoch <= 5:
             loss = loss_bce
@@ -682,9 +680,6 @@ def test_rnn_epoch_debugger(epoch, args, rnn, output, test_batch_size, union_gra
             edge_prob = output(query_nei_, key, value)
             edge_prob_exist = edge_prob[:, 0:len(user_visited)]
             meaning[index, 0:] = edge_prob_exist
-        print('----------------------------------------')
-        print(meaning)
-        print('----------------------------------------')
         max_row_value, _ = torch.max(meaning[:, 0:], dim=1)
         max_indices = torch.argmax(max_row_value)
         max_id = meaning_idx[:, 0][max_indices]
@@ -724,7 +719,6 @@ def train(args, dataset_train, rnn, output, union_graph_type, graphs_list):
 
         args.lr = 0.00001
         epoch = args.load_epoch
-        print('model loaded!, lr: {}'.format(args.lr))
     else:
         epoch = 1
 
@@ -758,19 +752,16 @@ def train(args, dataset_train, rnn, output, union_graph_type, graphs_list):
                 if args.exceed > args.max_num_node:
                     
                     if int(args.exceed/args.generate_size*index_gene) > args.max_num_node:
-                        print('ceed有用，进入large生成')
                         G_pred_step = test_rnn_epoch_largeScale(epoch, args, rnn, output,
                                                      gene_num=int(args.exceed / args.generate_size * index_gene),
                                                      test_batch_size=-1, union_graph_ori=union_graph_type)[2]
                     else:
-                        print('ceed有用，小号生成')
                         G_pred_step = test_rnn_epoch(epoch, args, rnn, output,
                                                      gene_num=int(args.exceed / args.generate_size * index_gene),
                                                      test_batch_size=-1, union_graph_ori=union_graph_type)[2]
                     fname = args.graph_save_path+'big_gene_stable_v1/' + args.fname_pred + str(epoch) + 'epoch_' + str(index_gene) + 'time_' + str(int(args.exceed/args.generate_size*index_gene)) + 'size.pkl'
 
                 else:
-                    print('常规生成')
                     G_pred_step = test_rnn_epoch(epoch, args, rnn, output, gene_num=int(args.max_num_node/args.generate_size*index_gene), test_batch_size=-1, union_graph_ori=union_graph_type)[2]
                     torch.cuda.empty_cache()
                     fname = args.graph_save_path+'common_gene_stable_v1/' + args.fname_pred + str(epoch) + 'epoch_' + str(index_gene) + 'time_' + str(int(args.max_num_node/args.generate_size*index_gene)) + 'size.pkl'

@@ -27,7 +27,3 @@ batch = 1000
 x = torch.randn(batch,1)
 y_baseline = torch.randn(batch,1)
 y_pred = torch.zeros(batch,1)
-
-print('MMD baseline', compute_mmd(x,y_baseline))
-print('MMD prediction', compute_mmd(x,y_pred))
-

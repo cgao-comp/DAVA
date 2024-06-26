@@ -179,23 +179,11 @@ def get_avg_simi(graph1: nx.Graph, graph2: nx.Graph):
     return simi_totoal / num
 
 def graph_kernel(graph1: nx.Graph, graph2: nx.Graph, sigma: float) -> float:
-    """
-    计算两个图之间的核函数值（这里使用高斯核函数）。
-    :param graph1: networkx图对象
-    :param graph2: networkx图对象
-    :param sigma: 高斯核函数的参数
-    :return: 核函数值
-    Warnings: large scale network results in maximum recursion depth exceeded in comparison. sys.setrecursionlimit(5000) OR nx.graph_edit_distance() with high complexity!
-    """
     ged_generator = nx.optimize_graph_edit_distance(graph1, graph2)
     ged_puni = (next(ged_generator))
 
     epsilon = 1e-7
     cos_puni = 1 - get_avg_simi(graph1, graph2) + epsilon
-
-    
-
-    
 
     return np.exp(-((cos_puni*ged_puni) ** 2) / (2 * sigma ** 2))
 def calculate_mmd(graphs1: list, graphs2: list, sigma: float) -> float:
